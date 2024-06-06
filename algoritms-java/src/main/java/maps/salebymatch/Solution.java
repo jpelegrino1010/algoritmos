@@ -1,4 +1,4 @@
-package salebymatch;
+package maps.salebymatch;
 
 import java.util.HashMap;
 import java.util.Map;
