@@ -7,6 +7,7 @@ public class Solution {
     public static void main(String[] args) {
         int arr []={10,20,20,10,10,30,50,10,20};
         System.out.println(sockMerchant(9,arr));
+        System.out.println(sockMerchant2(9,arr));
     }
 
     static int sockMerchant(int n, int[] ar) {
@@ -31,6 +32,26 @@ public class Solution {
             pairs += entry.getValue() / 2;
         }
 //        7) return the sum of pairs
+        return pairs;
+    }
+
+    static int sockMerchant2(int n, int[] ar) {
+        Map<Integer,Integer> map = new HashMap<>();
+
+        for (int num : ar) {
+            if(map.containsKey(num)) {
+                map.put(num,map.get(num) + 1);
+            }else {
+                map.put(num,1);
+            }
+        }
+
+        int pairs = 0;
+
+        for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
+            pairs+= entry.getValue() / 2;
+        }
+
         return pairs;
     }
 }

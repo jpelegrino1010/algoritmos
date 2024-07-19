@@ -1,12 +1,17 @@
 package maps.mostfrequenceletter;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class MostFrequenceLetter {
 
     public static void main(String[] args) {
         System.out.println(mostFrequence("Hoyesundiamuyespecialenmivida"));
+        System.out.println(mostFrequence2("Hoyesundiamuyespecialenmivida"));
     }
 
     public static Character mostFrequence(String str) {
@@ -31,5 +36,15 @@ public class MostFrequenceLetter {
         }
 
         return ch;
+    }
+
+    public static Character mostFrequence2(String str) {
+        return Arrays.stream(str.split("")).
+                    collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                    .entrySet()
+                    .stream()
+                    .max(Comparator.comparing(Map.Entry::getValue))
+                    .get()
+                    .getKey().charAt(0);
     }
 }
